@@ -8,74 +8,7 @@ $dbname="api"; /* nome do banco de dados */
 $conexao = mysqli_connect($dbhost, $dbuser, $dbpasswd) or die ("não foi possível a conexão, verifique os dados.");
 $db = mysqli_select_db($conexao,$dbname) or die ("não foi possível o acesso ao banco de dados $dbname.");
 
-function sem_acentos($string) {
-$string = strip_tags($string);
-$string = ereg_replace( "[ÁÀÂÃÄ]", "A", $string);
-$string = ereg_replace( "[áàâãäª]", "a", $string);
-$string = ereg_replace( "[ÉÈÊË]", "E", $string);
-$string = ereg_replace( "[éèêë]", "e", $string);
-$string = ereg_replace( "[ÍÌÎÏ]", "I", $string);
-$string = ereg_replace( "[íìîï]", "i", $string);
-$string = ereg_replace( "[ÓÒÔÕÖ]", "O", $string);
-$string = ereg_replace( "[óòôõöº]", "o", $string);
-$string = ereg_replace( "[ÚÙÛÜ]", "U", $string);
-$string = ereg_replace( "[úùûü]", "u", $string);
-$string = str_replace( "Ç", "C", $string);
-$string = str_replace( "ç", "c", $string);
-$string = str_replace( "´", "", $string );
-$string = str_replace( "`", "", $string );
-$string = str_replace( "~", "", $string );
-$string = str_replace( "^", "", $string );
-$string = str_replace( "¨", "", $string );
 
-$string = str_replace( "\\", "", $string );
-$string = str_replace( "*", "", $string );
-
-$string = str_replace( "?", "", $string );
-$string = str_replace( "!", "", $string );
-$string = str_replace( "<", "", $string );
-$string = str_replace( ">", "", $string );
-
-$string = str_replace( "&lt", "", $string );
-$string = str_replace( "&gt", "", $string );
-
-$string = str_replace( "@", "", $string );
-$string = str_replace( "(", "", $string );
-$string = str_replace( ")", "", $string );
-$string = str_replace( "[", "", $string );
-$string = str_replace( "]", "", $string );
-$string = str_replace( "{", "", $string );
-$string = str_replace( "}", "", $string );
-$string = str_replace( "+", "", $string );
-$string = str_replace( "$", "", $string );
-$string = str_replace( ";", "", $string );
-$string = str_replace( ":", "", $string );
-$string = str_replace( "'", "", $string );
-
-$string = str_replace( " ", "-", $string );
-$string = str_replace("--", "", $string);
-$string = str_replace("---", "", $string);
-$string = str_replace( ".", "-", $string );
-$string = str_replace(",", "", $string);
-$string = str_replace("\"", "", $string);
-$string = str_replace("(", "", $string);
-$string = str_replace(")", "", $string);
-$string = str_replace("/", "-", $string);
-$string = str_replace("=", "", $string);
-$string = str_replace("%", "", $string);
-
-// a partir de 7 - ele limpa a string
-$string = preg_replace("[-------]", "------", $string);
-$string = preg_replace("[------]", "-----", $string);
-$string = preg_replace("[-----]", "----", $string);
-$string = preg_replace("[----]", "---", $string);
-$string = preg_replace("[---]", "--", $string);
-$string = preg_replace("[--]", "-", $string);
-
-// retira o - quando for o primeiro caracter
-if($string[0]=="-") {
-$string = substr($string, 1);
-}
 
 // retira o - quando for o último caracter
 $last = $string[strlen($string)-1];
